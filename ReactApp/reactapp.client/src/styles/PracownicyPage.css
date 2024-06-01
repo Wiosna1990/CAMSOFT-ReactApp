@@ -1,0 +1,45 @@
+
+.pracownicy-frame {
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    padding: 13px;
+    padding-right: 250px;
+    margin-bottom: 10px;
+    background-color: #F6F6F6;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+.table-custom {
+    width: 95%;
+    border-collapse: collapse;
+    table-layout: fixed; 
+}
+
+    .table-custom th, .table-custom td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .table-custom th {
+        background-color: #dddddd;
+    }
+
+    .table-custom th, .table-custom td {
+        width: calc(100% / <liczba_kolumn>); 
+    }
+
+.scrollable-container {
+    overflow-y: auto;
+    max-height: 760px; 
+}
+.custom-select-datepicker {
+    width: 500px;
+    height: 36px;
+    border: 1px solid #ccc;
+    position: relative;
+    margin-left: 118px;
+    border-radius: 5px;
+}

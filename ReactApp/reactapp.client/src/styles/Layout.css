@@ -1,0 +1,61 @@
+.logo {
+    width: 280px;
+    margin: 7px auto;
+    height: 25px;
+    margin-top: 10px;
+    left: 5px;
+}
+.app {
+    overflow: hidden;
+}
+
+.horizontal-scroll-container {
+    overflow-x: hidden;
+}
+
+.MenuItem {
+    background-color: #8ACBED;
+}
+
+.header {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px; 
+    background-color: #1d8cd1; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    height: 50px; 
+    color: white; 
+}
+
+.container-fluid {
+    margin-top: 10px; /
+    margin-left: 60px;
+
+   
+}
+.menu {
+    width: 100%; 
+}
+
+.header .tab {
+    height: 40px;
+    margin-left: 300px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 0px;
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;  
+    top: 0px;  
+    color: black;
+}
+
+
