@@ -12,23 +12,21 @@ a{
 body {
     background-color: #FAFAFA;
     margin: 0;
-    padding: 0;
+    padding: ;
     min-height: 100vh;
+
 }
 
 .page-content {
-    width: 97.75%;
+    width: 92.2%;
     background-color: #FAFAFA;
-    min-height: 97vh;
-    margin-right: 0px;
+    min-height: 98vh;
+    margin-right: px;
     overflow: hidden;
 
-    
 }
 
-.card{
-    width:393px;
-    height:158px;
+.card {
+    max-width: 368px !important;
+    max-height: 148px !important;
 }
-
-

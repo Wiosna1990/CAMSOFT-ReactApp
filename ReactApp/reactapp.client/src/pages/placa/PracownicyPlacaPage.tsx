@@ -2,35 +2,38 @@
 import '../../styles/PracownicyPage.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useState} from 'react';
-
+import { useState } from 'react';
+/*import Form from 'react-bootstrap/Form';*/
 import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import Chatbot from '../../Chatbot';
+export const PracownicyPlaca = () => {
 
-export const ZleceniobiorcyPlaca = () => {
-
-    const handleDateChange = (date) => {
+    const handleDateChange = (date:string) => {
         setFormData({ ...formData, okres: date });
     };
-    
 
-    const [formData,setFormData] = useState({
+
+    const [formData, setFormData] = useState({
         pracownik: '',
         wyplata: '',
         nazwa: '',
         okres: '',
         wartość: '',
-        wynagrodzenieGodzinowe: '',
-        zlecenie: '',
-        iloscGodzin: '',
-        wynagrodzenieZlecenie: '',
+        wynagrodzenieZasadnicze: '',
         procent: '',
+        nazwiskoRodowe: '',
+        plec: '',
+        obywatelstwo: '',
+        stanowisko: '',
+        umowa: '',
         wartoscProcentowa: '',
         suma: ''
     });
     return (
-
+        
         <Container fluid className="page-content">
-            <div className="pracownicy-frame">
+            <div className="pracownicy-frame" style={{ marginTop: '20px' }}>
                 <table className="table-custom">
                     <thead>
                         <tr>
@@ -42,45 +45,44 @@ export const ZleceniobiorcyPlaca = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Chleb</td>
-                            <td>Patryk</td>
-                            <td>0005</td>
+                            <td>Buraś</td>
+                            <td>Natalia</td>
+                            <td>0001</td>
                             <td>Technik farmaceutyczny</td>
                         </tr>
 
                         <tr>
-                            <td>Stonoga</td>
+                            <td>Buraś</td>
                             <td>Kamil</td>
-                            <td>0006</td>
+                            <td>0002</td>
                             <td>Magister farmacji</td>
                         </tr>
                         <tr>
-                            <td>Tuba</td>
-                            <td>Dawid</td>
-                            <td>0007</td>
-                            <td>technik farmaceutyczny</td>
+                            <td>Chmiel</td>
+                            <td>Anna</td>
+                            <td>0003</td>
+                            <td>Pomoc apteczna</td>
                         </tr>
                         <tr>
-                            <td>Kania</td>
-                            <td>Katarzyna</td>
-                            <td>0008</td>
+                            <td>Rusałek</td>
+                            <td>Kinga</td>
+                            <td>0004</td>
                             <td>Magister farmacji</td>
                         </tr>
-
 
                     </tbody>
                 </table>
             </div>
             <div className="scrollable-container">
                 <div className="frame">
-                    <h5 style={{ marginBottom: '1em' }}>WYNAGRODZENIE UMOWA ZLECENIE</h5>
-                  
-            
-                  
+                    <h5 style={{ marginBottom: '1em' }}>WYNAGRODZENIE ZASADNICZE MIESIĘCZNE</h5>
+                   
+                   
+                    
                     <Row className="form-col">
                         <Col>
 
-                            <div /*className="react-datepicker__input-container"*/>
+                            <div>
 
                                 <label htmlFor="okres">Okres:</label>
                                 <DatePicker
@@ -102,8 +104,8 @@ export const ZleceniobiorcyPlaca = () => {
                     <Row>
                         <Col>
                             <div className="form-group">
-                                <label htmlFor="wynagrodzenieGodzinowe">Wynagrodzenie godzinowe:</label>
-                                <input type="text" id="wynagrodzenieGodzinowe" name="wynagrodzenieGodzinowe" value={formData.wynagrodzenieGodzinowe} readOnly />
+                                <label htmlFor="wynagrodzenieZasadnicze">Wynagrodzenie zasadnicze:</label>
+                                <input type="text" id="wynagrodzenieZasadnicze" name="wynagrodzenieZasadnicze" value={formData.wynagrodzenieZasadnicze} readOnly />
                             </div>
                         </Col>
                     </Row>
@@ -113,58 +115,57 @@ export const ZleceniobiorcyPlaca = () => {
                     <Row className="form-col">
                         <Col>
                             <div className="form-group">
-                                <label htmlFor="iloscGodzin">Ilość przepracowanych godzin:</label>
-                                <input type="text" id="iloscGodzin" name="iloscGodzin" value={formData.iloscGodzin} readOnly />
+                                <label htmlFor="wynagrodzenieZasadnicze">Wartość:</label>
+                                <input type="text" id="wynagrodzenieZasadnicze" name="wynagrodzenieZasadnicze" value={formData.wynagrodzenieZasadnicze} readOnly />
                             </div>
                         </Col>
-
-                        <Row>
-                            <Col>
-                                <div className="form-group">
-                                    <label htmlFor="wynagrodzenieZlecenie">Wynagrodzenie :</label>
-                                    <input type="text" id="wynagrodzenieZlecenie" name="wynagrodzenieZlecenie" value={formData.wynagrodzenieZlecenie} readOnly />
-                                </div>
-                            </Col>
-                      
-                        </Row>
                     </Row>
                 </div>
                 <div className="frame">
                     <h5 style={{ marginBottom: '1em' }}>PREMIA PROCENTOWA</h5>
-                    <Row>
+                    <Row className="form-col">
+                        <Col>
+                            <div className="form-group">
+                                <label htmlFor="wynagrodzenieZasadnicze">Wynagrodzenie zasadnicze:</label>
+                                <input type="text" id="wynagrodzenieZasadnicze" name="wynagrodzenieZasadnicze" value={formData.wynagrodzenieZasadnicze} readOnly />
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row className="form-col">
                         <Col>
                             <div className="form-group">
                                 <label htmlFor="procent">Procent premii:</label>
                                 <input type="text" id="procent" name="procent" value={formData.procent} readOnly />
                             </div>
                         </Col>
-
-                        <Row>
-                            <Col>
-                                <div className="form-group">
-                                    <label htmlFor="wartoscProcentowa">Wartość premii:</label>
-                                    <input type="text" id="wartoscProcentowa" name="wartoscProcentowa" value={formData.wartoscProcentowa} readOnly />
-                                </div>
-                            </Col>
-                          
-                        </Row>
+                      
+                    </Row>
+                </div>
+                <div className="frame">
+                    <h5 style={{ marginBottom: '1em' }}>SKŁADNIKI - PARAMETRY</h5>
+                    <Row className="form-col">
+                        <Col>
+                            <div className="form-group">
+                                <label htmlFor="wartoscProcentowa">Wartość:</label>
+                                <input type="text" id="wartoscProcentowa" name="wartoscProcentowa" value={formData.wartoscProcentowa}  readOnly />
+                            </div>
+                        </Col>
                     </Row>
                 </div>
                 <div className="frame">
                     <h5 style={{ marginBottom: '1em' }}>SUMA WYNAGRODZENIA</h5>
                     <Row className="form-col">
                         <Col>
-                            <Col>
-                                <div className="form-group">
-                                    <label htmlFor="suma">Wartość:</label>
-                                    <input type="text" id="suma" name="suma" value={formData.suma} readOnly />
-                                </div>
-                            </Col>
+                            <div className="form-group">
+                                <label htmlFor="suma">Wartość:</label>
+                                <input type="text" id="suma" name="suma" value={formData.suma}  readOnly />
+                            </div>
                         </Col>
                     </Row>
                 </div>
             </div>
+            <Chatbot/>
         </Container>
     )
 }
-export default ZleceniobiorcyPlaca;
+export default PracownicyPlaca;

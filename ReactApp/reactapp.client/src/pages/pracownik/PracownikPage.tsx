@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
+import Chatbot from '../../Chatbot';
+
 
 
 
@@ -25,18 +27,29 @@ export const Pracownik = () => {
         plec: '',
         obywatelstwo: '',
         stanowisko: '',
-        umowa: ''
+        umowa: '',
+        ulica: '',
+        nrDomu: '',
+        nrLokalu: '',
+        kodPocztowy: '',
+        miejscowosc: '',
+        poczta: '',
+        wojewodztwo: '',
+        kraj: '',
+        nrTelefonu: '',
+        email: '',
+        zawod: ''
     });
 
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        addEmployee(formData);
+    /*    addEmployee(formData);*/
         console.log(formData);
     };
     return (
@@ -44,7 +57,7 @@ export const Pracownik = () => {
         <Container fluid className="page-content">
 
 
-            <div className="frame">
+            <div className="frame" style={{ marginTop: '20px'}}>
                 <h5 style={{ marginBottom: '1em' }}>DANE IDENTYFIKACYJNE</h5>
                 <Row className="form-col">
                     <Col>
@@ -80,6 +93,9 @@ export const Pracownik = () => {
                             <label htmlFor="pesel">PESEL:</label>
                             <input type="text" id="pesel" name="pesel" value={formData.pesel} onChange={handleInputChange}  />
                         </div>
+                    </Col>
+                    <Col>
+
                     </Col>
                 </Row>
                 <h5 style={{ marginBottom: '1em', marginTop: '1em' }}>DATA I MIEJSCE URODZENIA</h5>
@@ -232,6 +248,7 @@ export const Pracownik = () => {
             </div>
             
             <button type="submit" onClick={handleSubmit}>Zapisz</button>
+            <Chatbot/>
         </Container>
 
     )

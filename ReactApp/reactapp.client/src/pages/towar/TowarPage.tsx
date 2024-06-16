@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import '../../styles/TowarPage.css';
-
+import Chatbot from '../../Chatbot';
 import { useState } from 'react';
 
 export const Towar = () => {
@@ -34,12 +34,12 @@ export const Towar = () => {
         numer: ''
     });
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         console.log(formData);
     };
@@ -64,13 +64,16 @@ export const Towar = () => {
             dawka: '',
             opakowanie: '',
             kraj: '',
-            producent: ''
+            producent: '',
+            recepta: '',
+            rodzaj: '', // Include rodzaj
+            numer: ''  // 
         });
     };
 
     return (
         <Container fluid className="page-content">
-            <div className="frame">
+            <div className="frame" style={{ marginTop: '20px' }}>
                 <h5 style={{ marginBottom: '1em' }}>KARTA LEKU</h5>
                 <Row className="form-col">
                     <Col>
@@ -297,8 +300,9 @@ export const Towar = () => {
                 </Row>
             </div>
 
-            <button type="submit" onClick={handleSubmit} style={{ marginRight: '1610px' }}>Zapisz</button>
+            <button type="submit" onClick={handleSubmit} style={{ marginRight: '1560px' }}>Zapisz</button>
             <button type="button" onClick={handleClear}>Wyczyść</button>
+            <Chatbot/>
         </Container>
     );
 

@@ -13,7 +13,7 @@ export const Login = () => {
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
     const navigate = useNavigate();
-    const handleLogin = (event) => {
+    const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); 
 
         setLoginError(''); 

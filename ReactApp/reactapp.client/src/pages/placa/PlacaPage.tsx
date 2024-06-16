@@ -1,21 +1,19 @@
 ﻿
-
-
 import  { useState } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import DatePicker from 'react-datepicker';
-
+import Chatbot from '../../Chatbot';
 import '../../styles/PlacaPage.css';
 import 'react-datepicker/dist/react-datepicker.css';
-export const Placa = () => {
+export const Placa: React.FC = () => {
     const [formData, setFormData] = useState({
         pracownik: '',
         wyplata: '',
         nazwa: '',
-        okres: null,
+        okres: '',
         wartość: '',
         wynagrodzenieZasadnicze: '',
         procent: '',
@@ -28,7 +26,7 @@ export const Placa = () => {
         suma: ''
     });
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
 
@@ -37,7 +35,7 @@ export const Placa = () => {
         }
     };
 
-    const handleDateChange = (date) => {
+    const handleDateChange = (date:string) => {
         setFormData({ ...formData, okres: date });
     };
 
@@ -54,7 +52,7 @@ export const Placa = () => {
             pracownik: '',
             wyplata: '',
             nazwa: '',
-            okres: null,
+            okres: '',
             wartość: '',
             wynagrodzenieZasadnicze: '',
             procent: '',
@@ -68,14 +66,14 @@ export const Placa = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         console.log(formData);
     };
 
     return (
         <Container fluid className="page-content">
-            <div className="frame">
+            <div className="frame" style={{ marginTop: '20px' }}>
                 <h5 style={{ marginBottom: '1em' }}>WYNAGRODZENIE ZASADNICZE MIESIĘCZNE</h5>
                 <Row className="form-col">
                     <Col>
@@ -117,7 +115,7 @@ export const Placa = () => {
                     <Col>
 
                         <div >
-                            
+
                             <label htmlFor="okres">Okres:</label>
                             <DatePicker
                                 selected={formData.okres}
@@ -128,10 +126,10 @@ export const Placa = () => {
                                 id="okres"
                                 name="okres"
                                 className="custom-select-datepicker"
-                                
-                             
+
+
                             />
-                            
+
                         </div>
                     </Col>
                 </Row>
@@ -198,10 +196,12 @@ export const Placa = () => {
                         </div>
                     </Col>
                 </Row>
-               
+
             </div>
-            <button type="submit" onClick={handleSubmit} style={{ marginRight: '1610px' }}>Zapisz</button>
+            <button type="submit" onClick={handleSubmit} style={{ marginRight: '1560px' }}>Zapisz</button>
             <button type="button" onClick={handleClear}>Wyczyść</button>
+            <Chatbot/>
         </Container>
     );
 };
+

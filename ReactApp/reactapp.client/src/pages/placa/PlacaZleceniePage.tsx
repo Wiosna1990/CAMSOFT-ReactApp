@@ -1,4 +1,5 @@
 ﻿
+
 import '../../styles/PlacaPage.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,7 +8,7 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import Chatbot from '../../Chatbot';
 export const PlacaZlecenie = () => {
     const [formData, setFormData] = useState({ //obiekt przech.dane formularza, set funkcja aktualizujaca stan
         pracownik: '',
@@ -21,13 +22,14 @@ export const PlacaZlecenie = () => {
         wynagrodzenieZlecenie: '',
         procent: '',
         wartoscProcentowa: '',
-        suma: ''
+        suma: '',
+        umowa:''
     });
-    const handleDateChange = (date) => { //f.aktualizuje pole okres->date
+    const handleDateChange = (date:string) => { //f.aktualizuje pole okres->date
         setFormData({ ...formData, okres: date }); //aktualizuje formData
     };
 
-    const handleInputChange = (e) => { //aktualizuje pole
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => { //aktualizuje pole
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
 
@@ -36,7 +38,7 @@ export const PlacaZlecenie = () => {
         }
     };
 
-    const handleCalculate = (e) => {
+    const handleCalculate = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const { wynagrodzenieGodzinowe, iloscGodzin } = formData;
         const wynagrodzenieZlecenie = parseFloat(wynagrodzenieGodzinowe) * parseInt(iloscGodzin);
@@ -44,16 +46,18 @@ export const PlacaZlecenie = () => {
         console.log({ ...formData, wynagrodzenieZlecenie: wynagrodzenieZlecenie.toString() });
     };
 
-    const handleCalculateProcent = (e) => {
+
+    const handleCalculateProcent = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         const { wynagrodzenieZlecenie, procent } = formData;
         const wartoscProcentowa = (parseFloat(wynagrodzenieZlecenie) * parseFloat(procent)) / 100;
         setFormData({ ...formData, wartoscProcentowa: wartoscProcentowa.toString() });
 
-        handleCalculateSuma(wynagrodzenieZlecenie, wartoscProcentowa);
+        handleCalculateSuma(wynagrodzenieZlecenie, wartoscProcentowa.toString());
     };
 
-    const handleCalculateSuma = (wynagrodzenieZlecenie, wartoscProcentowa) => {
+
+    const handleCalculateSuma = (wynagrodzenieZlecenie: string, wartoscProcentowa: string) => {
         const suma = parseFloat(wynagrodzenieZlecenie) + parseFloat(wartoscProcentowa);
         setFormData((prevFormData) => ({ ...prevFormData, suma: suma.toString() }));
         console.log({ ...formData, suma: suma.toString() });
@@ -72,18 +76,19 @@ export const PlacaZlecenie = () => {
             wynagrodzenieZlecenie: '',
             procent: '',
             wartoscProcentowa: '',
-            suma: ''
+            suma: '',
+            umowa:''
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         console.log(formData);
     };
 
     return (
         <Container fluid className="page-content">
-            <div className="frame">
+            <div className="frame" style={{ marginTop: '20px' }}>
                 <h5 style={{ marginBottom: '1em' }}>WYNAGRODZENIE UMOWA ZLECENIE</h5>
                 <Row className="form-col">
                     <Col>
@@ -211,10 +216,11 @@ export const PlacaZlecenie = () => {
                     </Col>
                 </Row>
             </div>
-            <button type="submit" onClick={handleSubmit} style={{ marginRight: '1610px' }}>Zapisz</button>
+            <button type="submit" onClick={handleSubmit} style={{ marginRight: '1560px' }}>Zapisz</button>
             <button type="button" onClick={handleClear}>Wyczyść</button>
+            <Chatbot/>
         </Container>
     );
 };
 
-export default PlacaZlecenie;
+//export default PlacaZlecenie;

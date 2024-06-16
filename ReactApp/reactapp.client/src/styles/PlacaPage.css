@@ -2,10 +2,11 @@
 .frame {
     border: 1px solid #E1E1E1;
     border-radius: 5px;
-    padding: 13px;
+    padding: 7px;
     padding-right: 250px;
-    margin-bottom: 10px;
+    margin-bottom: px;
     background-color: #F6F6F6;
+
 }
 
 .form-group {

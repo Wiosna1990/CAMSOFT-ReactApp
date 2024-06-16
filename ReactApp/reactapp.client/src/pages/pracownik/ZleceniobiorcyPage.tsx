@@ -2,11 +2,12 @@
 import '../../styles/PracownicyPage.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-export const Wszyscy = () => {
+import Chatbot from '../../Chatbot';
+export const Zleceniobiorcy = () => {
     return (
-
+        
         <Container fluid className="page-content">
-            <div className="pracownicy-frame">
+            <div className="pracownicy-frame" style={{ marginTop: '20px' }}>
                 <table className="table-custom">
                     <thead>
                         <tr>
@@ -17,31 +18,6 @@ export const Wszyscy = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Buraś</td>
-                            <td>Natalia</td>
-                            <td>0001</td>
-                            <td>Technik farmaceutyczny</td>
-                        </tr>
-
-                        <tr>
-                            <td>Buraś</td>
-                            <td>Kamil</td>
-                            <td>0002</td>
-                            <td>Magister farmacji</td>
-                        </tr>
-                        <tr>
-                            <td>Chmiel</td>
-                            <td>Anna</td>
-                            <td>0003</td>
-                            <td>Pomoc apteczna</td>
-                        </tr>
-                        <tr>
-                            <td>Rusałek</td>
-                            <td>Kinga</td>
-                            <td>0004</td>
-                            <td>Magister farmacji</td>
-                        </tr>
                         <tr>
                             <td>Chleb</td>
                             <td>Patryk</td>
@@ -98,7 +74,7 @@ export const Wszyscy = () => {
                         </Col>
                         <Col>
                             <div className="form-group">
-                                <label htmlFor="drugieImie">Drugie imię</label>
+                                <label htmlFor="drugieImie">Drugie imię:</label>
                                 <input type="text" id="drugieImie" name="drugieImie" />
                             </div>
                         </Col>
@@ -132,7 +108,7 @@ export const Wszyscy = () => {
                     <Row className="form-col">
                         <Col>
                             <div className="form-group">
-                                <label htmlFor="plec">Płeć:</label>
+                                <label htmlFor="plec">Płec:</label>
                                 <input type="text" id="plec" name="plec" />
                             </div>
                         </Col>
@@ -186,7 +162,7 @@ export const Wszyscy = () => {
                     <Row className="form-row">
                         <Col>
                             <div className="form-group">
-                                <label htmlFor="miejscowosc">Miejscowość</label>
+                                <label htmlFor="miejscowosc">Miejscowość:</label>
                                 <input type="text" id="miejscowosc" name="miejscowosc" />
                             </div>
                         </Col>
@@ -217,7 +193,7 @@ export const Wszyscy = () => {
                         <Col>
                             <div className="form-group">
                                 <label htmlFor="nrTelefonu">Nr telefonu:</label>
-                                <input type="text" id="nrTelefonu" name="nrTelefonu" />
+                                <input type="text" id="nrTelefonu" name="nrTelefonu"  />
                             </div>
                         </Col>
                         <Col>
@@ -252,7 +228,8 @@ export const Wszyscy = () => {
                     </Row>
                 </div>
             </div>
+            <Chatbot/>
         </Container>
     )
 }
-export default Wszyscy;
+export default Zleceniobiorcy;

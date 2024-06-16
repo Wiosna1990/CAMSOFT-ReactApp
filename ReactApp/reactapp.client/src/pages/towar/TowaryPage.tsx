@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 import '../../styles/TowaryPage.css';
+import Chatbot from '../../Chatbot';
 
 export const Towary = () => {
     const [formData, setFormData] = useState({
@@ -33,15 +34,15 @@ export const Towary = () => {
         numer: ''
     });
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
     return (
         <Container fluid className="page-content">
-            <Accordion defaultActiveKey="0" className="custom-accordion">
+            <Accordion defaultActiveKey="0" className="custom-accordion" style={{ marginTop: '20px' }}>
                 <Accordion.Item eventKey="0">
-                    <Accordion.Header style={{backgroundcolor: '#ECECEC'} }>Filtrowanie listy</Accordion.Header>
+                    <Accordion.Header style={{backgroundColor: '#ECECEC'} }>Filtrowanie listy</Accordion.Header>
                     <Accordion.Body>
                         <Form>
                             <Row>
@@ -86,7 +87,7 @@ export const Towary = () => {
                         <th>Numer</th>
                         <th>Nazwa handlowa</th>
                         <th>Rodzaj</th>
-                        <th>Cenza zakupu</th>
+                        <th>Cena zakupu</th>
                         <th>Cena detaliczna</th>
                     </tr>
                 </thead>
@@ -329,7 +330,7 @@ export const Towary = () => {
                     </Row>
                 </div>
                 </div>
-                
+                <Chatbot/>
         </Container>
     )
 }

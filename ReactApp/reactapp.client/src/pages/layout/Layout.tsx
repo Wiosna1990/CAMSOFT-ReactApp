@@ -1,15 +1,12 @@
-﻿import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import '../../styles/Layout.css';
-import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { useState } from 'react';
+﻿
 
-const tabPaths = {
+import { useState } from 'react';
+import { Container, Nav, Navbar, Image, Row } from 'react-bootstrap';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import '../../styles/Layout.css';
+
+const tabPaths: { [key: string]: string } = {
     'Home': '/app',
     'Dodaj pracownika': '/pracownik',
     'Pracownicy': '/pracownicy',
@@ -27,12 +24,15 @@ const tabPaths = {
     'Kontakt': '/kontakt',
     'Wyloguj się': '/'
 };
+
+
 export const Layout = () => {
-    const [activeTabs, setActiveTabs] = useState([]); //tab przech nazwy zakladek
-    const [currentTab, setCurrentTab] = useState(""); //przech nazwe zakladki
+
+    const [activeTabs, setActiveTabs] = useState<string[]>([]); // tab przechowuje nazwy zakładek
+    const [currentTab, setCurrentTab] = useState<string>(''); // przechowuje nazwę zakładki
     const navigate = useNavigate();
 
-    const handleCloseTab = (tabName) => {              //zam.zakladke
+    const handleCloseTab = (tabName: string) => { // zamknij zakładkę
         setActiveTabs(prevTabs => {
             const newTabs = prevTabs.filter(tab => tab !== tabName);
             if (currentTab === tabName) {
@@ -47,7 +47,8 @@ export const Layout = () => {
             return newTabs;
         });
     };
-    const handleOpenTab = (tabName) => {   //otw.zakladke
+
+    const handleOpenTab = (tabName: string) => { // otwórz zakładkę
         if (tabName !== 'Home') {
             if (!activeTabs.includes(tabName)) {
                 setActiveTabs(prevTabs => [...prevTabs, tabName]);
@@ -61,7 +62,7 @@ export const Layout = () => {
         }
     };
 
-    const handleTabClick = (tabName) => { //zmien aktualna zakladke,nawig do strony
+    const handleTabClick = (tabName: string) => { // zmień aktualną zakładkę, nawiguj do strony
         if (tabName !== 'Home') {
             setCurrentTab(tabName);
             navigate(tabPaths[tabName]);
@@ -72,16 +73,14 @@ export const Layout = () => {
         }
     };
 
-    // F. czysci zakladki
+    // Funkcja czyszcząca zakładki
     const handleNavigateToHome = () => {
         setActiveTabs([]);
         setCurrentTab('Home');
         navigate(tabPaths['Home']);
     };
 
-
     return (
-
         <div className="app">
             <header className="header" style={{ display: 'flex', alignItems: 'center' }}>
                 <Link to="/app" className="d-block text-center" onClick={handleNavigateToHome}>
@@ -89,7 +88,6 @@ export const Layout = () => {
                 </Link>
                 <div className="tabs" style={{ display: 'flex', justifyContent: 'flex-start', width: '100%', paddingLeft: '20px' }}>
                     {activeTabs.map((tabName, index) => (
-
                         <div key={index} className="tab" style={{
                             height: '40px',
                             marginLeft: index === 0 ? '0' : '5px',
@@ -104,12 +102,7 @@ export const Layout = () => {
                             position: 'relative',
                             cursor: 'pointer',
                             fontSize: '14px',
-
-
-                        }}
-                            onClick={() => handleTabClick(tabName, `/${tabName.toLowerCase().replace(' ', '-')}`)}
-
-                        >
+                        }} onClick={() => handleTabClick(tabName)}>
                             {tabName}
                             <div className="close-tab" onClick={(e) => { e.stopPropagation(); handleCloseTab(tabName); }} style={{
                                 marginLeft: '20px',
@@ -118,31 +111,23 @@ export const Layout = () => {
                                 x
                             </div>
                         </div>
-
                     ))}
                 </div>
-
             </header>
 
-
-
-            <Navbar className="bg-body-terteiary">
+            <Navbar className="bg-body-tertiary">
                 <Container fluid>
                     <div className="d-flex">
-                        <Nav
-                            className="flex-column"
-                            style={{
-                                width: '320px',
-                                height: '100%',
-                                position: 'fixed',
-                                left: 0,
-                                top: '50px',
-                                backgroundColor: '#8ACBED',
-                                padding: '20px',
-                            }}
-                        >
+                        <Nav className="flex-column" style={{
+                            width: '320px',
+                            height: '100%',
+                            position: 'fixed',
+                            left: 0,
+                            top: '50px',
+                            backgroundColor: '#8ACBED',
+                            padding: '20px',
+                        }}>
                             <Menu>
-
                                 <MenuItem style={{ backgroundColor: '#8ACBED' }} component={<Link to="/app" onClick={handleNavigateToHome} />}>Home</MenuItem>
 
                                 <SubMenu style={{ backgroundColor: '#8ACBED' }} label="Kadry">
@@ -155,8 +140,7 @@ export const Layout = () => {
                                 </SubMenu>
 
                                 <SubMenu style={{ backgroundColor: '#8ACBED' }} label="Place">
-                                    <MenuItem style={{ backgroundColor: '#8ACBED' }} component={<Link to="/placa" />} onClick={() => handleOpenTab('Oblicz płace')}
-                                    >Oblicz płace</MenuItem>
+                                    <MenuItem style={{ backgroundColor: '#8ACBED' }} component={<Link to="/placa" />} onClick={() => handleOpenTab('Oblicz płace')}>Oblicz płace</MenuItem>
                                     <SubMenu style={{ backgroundColor: '#8ACBED' }} label="Lista płac">
                                         <MenuItem style={{ backgroundColor: '#8ACBED' }} component={<Link to="/pracownicyplaca" />} onClick={() => handleOpenTab('Lista płac: Pracownicy')}>Pracownicy</MenuItem>
                                         <MenuItem style={{ backgroundColor: '#8ACBED' }} component={<Link to="/zleceniobiorcyplaca" />} onClick={() => handleOpenTab('Lista płac: Zleceniobiorcy')}>Zleceniobiorcy</MenuItem>
@@ -179,32 +163,26 @@ export const Layout = () => {
                                 <MenuItem style={{ backgroundColor: '#8ACBED' }} component={<Link to="/" />}>Wyloguj się</MenuItem>
                             </Menu>
 
-                            <footer className="footer" style={{ position: 'fixed', bottom: '0', left: '0', backgroundColor: '#8ACBED' }}>
+                            <footer className="footer">
                                 <div>© CAMSOFT </div>
                                 <div>Kontakt: 512-345-678 | pomoc@camsoft.pl</div>
                             </footer>
                         </Nav>
-
-
                     </div>
                 </Container>
             </Navbar>
-            <Container fluid className="mt-0 pt-0 horizontal-scroll-container page-content" style={{ height: '95vh' }}>
+            <Container fluid className="mt-0 pt-0 horizontal-scroll-container page-content" style={{ marginLeft: '300px', padding: '20px', height: '95vh' }}>
                 <Row>
-                    <Col sm={1}></Col>
-                    <Col sm={11}>
+                    {/*<Col sm={0}></Col>*/}
+                    {/*<Col sm={13}>*/}
                         <div className="px-10">
                             <Outlet />
                         </div>
-                    </Col>
+                    {/*</Col>*/}
                 </Row>
             </Container>
-
-
         </div>
+    );
+};
 
-
-    )
-}
-
-
+export default Layout;

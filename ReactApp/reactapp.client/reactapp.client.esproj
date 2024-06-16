@@ -15,9 +15,6 @@
     <TypeScriptConfiguration Remove="public\NewFolder\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\pages\aktualnosci\" />
-    <Folder Include="src\pages\placa\" />
     <Folder Include="src\styles\" />
-    <Folder Include="src\pages\pracownik\" />
   </ItemGroup>
 </Project>

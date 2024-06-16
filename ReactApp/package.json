@@ -1,7 +1,12 @@
 {
   "dependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "date-fns": "^3.6.0",
     "react-datepicker": "^6.9.0",
     "react-pro-sidebar": "^1.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
   }
 }

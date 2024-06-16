@@ -1,32 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { Towar } from './pages/towar/TowarPage.jsx'
-import { Towary } from './pages/towar/TowaryPage.jsx'
-import { Pracownik } from './pages/pracownik/PracownikPage.jsx'
-import { Pracownicy } from './pages/pracownik/PracownicyPage.jsx'
-import { Zleceniobiorcy } from './pages/pracownik/ZleceniobiorcyPage.jsx'
-import { Wszyscy } from './pages/pracownik/WszyscyPage.jsx'
-import { Kontakt } from './pages/kontakt/KontaktPage.jsx'
-import { Placa } from './pages/placa/PlacaPage.jsx'
-import { PracownicyPlaca } from './pages/placa/PracownicyPlacaPage.jsx'
-import { ZleceniobiorcyPlaca } from './pages/placa/ZleceniobiorcyPlacaPage.jsx'
-import { PlacaZlecenie } from './pages/placa/PlacaZleceniePage.jsx'
-import { WszyscyPlaca } from './pages/placa/WszyscyPlacaPage.jsx'
-import { Layout } from './pages/layout/Layout.jsx';
+import App from './App'
+import { Towar } from './pages/towar/TowarPage'
+import { Towary } from './pages/towar/TowaryPage'
+import { Pracownik } from './pages/pracownik/PracownikPage'
+import { Pracownicy } from './pages/pracownik/PracownicyPage'
+import { Zleceniobiorcy } from './pages/pracownik/ZleceniobiorcyPage'
+import { Wszyscy } from './pages/pracownik/WszyscyPage'
+import { Kontakt } from './pages/kontakt/KontaktPage'
+import { Placa } from './pages/placa/PlacaPage'
+import { PracownicyPlaca } from './pages/placa/PracownicyPlacaPage'
+import { ZleceniobiorcyPlaca } from './pages/placa/ZleceniobiorcyPlacaPage'
+import { PlacaZlecenie } from './pages/placa/PlacaZleceniePage'
+import { WszyscyPlaca } from './pages/placa/WszyscyPlacaPage'
+import { Layout } from './pages/layout/Layout';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Login } from './pages/login/LoginPage.jsx';
+import { Login } from './pages/login/LoginPage';
+import { Aktualnosci } from './pages/aktualnosci/AktualnosciPage';
 
 
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+ReactDOM.createRoot(document.getElementById("root")as HTMLElement).render(
+    /*   <React.StrictMode>*/
+
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Login/>}>
                     <Route index element={<Login />} />
                 </Route>
-
+                <Route path='/login' element={<Login/>}>
+                    <Route index element={<Login />} />
+                </Route>
                 <Route path='/app' element={<Layout />}>
                     <Route index element={<App />} />
                 </Route>
@@ -65,8 +69,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 </Route>
                 <Route path='/placazlecenie' element={<Layout />}>
                     <Route index element={<PlacaZlecenie />} />
-                </Route>
+            </Route>
+            <Route path='/aktualnosci' element={<Layout />}>
+                <Route index element={<Aktualnosci />} />
+            </Route>
             </Routes>
         </BrowserRouter>
-    </React.StrictMode>
+
+/*    </React.StrictMode>*/
 );

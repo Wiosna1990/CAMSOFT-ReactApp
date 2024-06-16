@@ -2,7 +2,7 @@
 import '../../styles/PracownicyPage.css';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Chatbot from '../../Chatbot';
 
 
 export const Pracownicy = () => {
@@ -10,7 +10,7 @@ export const Pracownicy = () => {
     return (
  
         <Container fluid className="page-content">
-            <div className="pracownicy-frame">
+            <div className="pracownicy-frame" style={{ marginTop: '20px' }}>
                 <table className="table-custom">
                     <thead>
                         <tr>
@@ -197,7 +197,7 @@ export const Pracownicy = () => {
                     <Col>
                         <div className="form-group">
                             <label htmlFor="nrTelefonu">Nr telefonu:</label>
-                            <input type="text" id="nrTelefonu" name="nrTelefonu" v />
+                            <input type="text" id="nrTelefonu" name="nrTelefonu"  />
                         </div>
                     </Col>
                     <Col>
@@ -232,6 +232,7 @@ export const Pracownicy = () => {
                 </Row>
                 </div>
             </div>
+            <Chatbot/>
         </Container>
     )
 }

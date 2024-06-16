@@ -5,13 +5,13 @@ import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import Form from 'react-bootstrap/Form';
-
+import Chatbot from '../../Chatbot';
 export const WszyscyPlaca = () => {
-    const handleDateChange = (date) => {
+    const handleDateChange = (date:string) => {
         setFormData({ ...formData, okres: date });
     };
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -19,7 +19,7 @@ export const WszyscyPlaca = () => {
         pracownik: '',
         wyplata: '',
         nazwa: '',
-        okres: null,
+        okres: '',
         wartość: '',
         wynagrodzenieZasadnicze: '',
         procent: '',
@@ -36,7 +36,7 @@ export const WszyscyPlaca = () => {
     return (
 
         <Container fluid className="page-content">
-            <div className="pracownicy-frame">
+            <div className="pracownicy-frame" style={{ marginTop: '20px' }}>
                 <table className="table-custom">
                     <thead>
                         <tr>
@@ -212,7 +212,7 @@ export const WszyscyPlaca = () => {
                     </Row>
                 </div>
             </div>
-  
+  <Chatbot/>
         </Container>
     )
 }
